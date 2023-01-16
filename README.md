@@ -1,5 +1,5 @@
 # v-flactag
-FLAC tag library written in V
+FLAC tag library written in V.
 
 ## Setup
 `v install Sorrow446.vflactag`
