@@ -12,7 +12,7 @@ struct Block {
 struct Blocks {
 	mut:
 		stream_blocks []Block
-		meta_blocks []Block
+		//meta_blocks []Block
 		cover_blocks []Block
 		other_blocks []Block
 }
