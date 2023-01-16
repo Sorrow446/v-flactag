@@ -92,6 +92,7 @@ flac.write(mut to_write, del_strings) or {
 ```
 
 ## Deletion strings
+Case insensitive.
 ```
 album string
 album_artist
