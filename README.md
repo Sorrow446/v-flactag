@@ -18,16 +18,12 @@ defer {
 ### Read
 #### Read album title
 ```v
-tags := flac.read() or {
-    panic(err)
-}
+tags := flac.read()!
 println(tags.album)
 ```
 #### Extract all covers and save them locally
 ```v
-tags := flac.read() or {
-    panic(err)
-}
+tags := flac.read()!
 if tags.has_covers {
     for idx, cover in tags.covers {
         os.write_file_array("${idx+1}.jpg", cover.picture_data) or {
@@ -43,15 +39,12 @@ mut to_write := &flactag.FLACMeta{
     album: 'my album'
     year: 2023
 }
-flac.write(mut to_write, []string{}) or {
-    panic(err)
-}
+flac.write(mut to_write, []string{})!
 ```
 #### Write two covers, retaining any already written
 ```v
 cover_data := os.read_bytes('1.jpg')!
 cover := flactag.FLACCover {
-    colour_depth: 16
     height: 600
     mime_type: 'image/jpeg'
     picture_type: 3
@@ -61,7 +54,6 @@ cover := flactag.FLACCover {
 
 cover_two_data := os.read_bytes('2.jpg')!
 cover_two := flactag.FLACCover {
-    colour_depth: 16
     height: 1000
     mime_type: 'image/jpeg'
     picture_type: 3
@@ -77,25 +69,19 @@ mut to_write := &flactag.FLACMeta{
     covers: covers
 }
 
-flac.write(mut to_write, []string{}) or {
-    panic(err)
-}
+flac.write(mut to_write, []string{})!
 ```
 #### Delete genre, the custom tag named "CUST 1" and the second cover
 ```v
 mut to_write := &flactag.FLACMeta{}
 del_strings := ['genre', 'CUST 1', 'cover:2']
 
-flac.write(mut to_write, del_strings) or {
-    panic(err)
-}
+flac.write(mut to_write, del_strings)!
 ```
 ### Stream Info
 #### Read bit-depth and sample rate
 ```v
-si := flac.read_stream_info() or {
-    panic(err)
-}
+si := flac.read_stream_info()!
 println('${si.bit_depth}-bit / ${si.sample_rate} Hz')
 ````
 
@@ -192,7 +178,7 @@ pub struct FLACStreamInfo {
 ```
 
 ## Thank you
-v-flactag uses a bit reader ported to V from mewkiz's flac library.
+v-flactag uses a bit reader ported to V from mewkiz's Go flac library.
 
 ## Disclaimer
 Writing is stable, but I will not be responsible for any corruption to your FLACs.
