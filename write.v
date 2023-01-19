@@ -293,6 +293,7 @@ fn lower_del_strings(del_strings []string) []string {
 }
 
 pub fn(mut flac FLAC) write(mut to_write &FLACMeta, _del_strings []string)! {
+	flac.f.seek(4, .start)!
 	del_strings := lower_del_strings(_del_strings)
 	mut parsed := &Blocks{}
 	mut buf := []u8{len: 1}
@@ -332,5 +333,4 @@ pub fn(mut flac FLAC) write(mut to_write &FLACMeta, _del_strings []string)! {
 	os.mv(temp_path, flac.flac_path)!
 	flac_ := open(flac.flac_path)!
 	flac = flac_
-	flac.f.seek(4, .start)!
 }

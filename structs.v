@@ -51,3 +51,16 @@ pub struct FLACMeta {
 		vendor string
 		year int
 }
+
+pub struct FLACStreamInfo {
+	pub mut:
+		block_size_min int
+		block_size_max int
+		frame_size_min int
+		frame_size_max int
+		sample_rate int
+		channel_count int
+		bit_depth int
+		sample_count i64
+		audio_md5 []u8
+}

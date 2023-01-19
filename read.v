@@ -144,6 +144,7 @@ fn skip(mut f os.File) !{
 }
 
 pub fn (mut flac FLAC) read() !&FLACMeta {
+	flac.f.seek(4, .start)!
 	mut parsed := &FLACMeta{}
 	mut buf := []u8{len: 1}
 	for {
@@ -166,6 +167,5 @@ pub fn (mut flac FLAC) read() !&FLACMeta {
 			break
 		}
 	}
-	flac.f.seek(4, .start)!
 	return parsed
 }
