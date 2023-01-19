@@ -192,7 +192,7 @@ pub struct FLACStreamInfo {
 ```
 
 ## Thank you
-v-flactag uses a bitreader ported to V from mewkiz's flac library.
+v-flactag uses a bit reader ported to V from mewkiz's flac library.
 
 ## Disclaimer
 Writing is stable, but I will not be responsible for any corruption to your FLACs.
