@@ -90,6 +90,14 @@ flac.write(mut to_write, del_strings) or {
     panic(err)
 }
 ```
+### Stream Info
+#### Read bit-depth and sample rate
+```v
+si := flac.read_stream_info() or {
+    panic(err)
+}
+println('${si.bit_depth}-bit / ${si.sample_rate} Hz')
+````
 
 ## Deletion strings
 Case-insensitive.
@@ -167,6 +175,19 @@ pub struct FLACMeta {
         track_total int
         vendor string
         year int
+}
+
+pub struct FLACStreamInfo {
+	pub mut:
+		block_size_min int
+		block_size_max int
+		frame_size_min int
+		frame_size_max int
+		sample_rate int
+		channel_count int
+		bit_depth int
+		sample_count i64
+		audio_md5 []u8
 }
 ```
 
