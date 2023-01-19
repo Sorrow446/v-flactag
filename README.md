@@ -88,7 +88,7 @@ println('${si.bit_depth}-bit / ${si.sample_rate} Hz')
 ## Deletion strings
 Case-insensitive.
 ```
-album string
+album
 album_artist
 artist
 comment
