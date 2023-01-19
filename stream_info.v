@@ -1,4 +1,4 @@
-module flactag
+module vflactag
 
 import os
 import bitreader

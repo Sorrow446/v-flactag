@@ -1,4 +1,4 @@
-module flactag
+module vflactag
 
 pub const (
 	resolve_field_flac = {
